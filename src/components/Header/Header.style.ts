@@ -1,15 +1,7 @@
 import styled from "styled-components";
 
 
-export const Container = styled.div`
-  max-width: 1200px; 
-  margin: 0 auto; 
-  padding: 0 65px; 
-  font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
-  line-height: 19px;
-  
-`;
+
 
 export const StylesHeader = styled.header`
   background: #0F52BA;
@@ -19,6 +11,7 @@ export const StylesHeader = styled.header`
   padding: 0 75px;
   justify-content: space-between;
   text-align: left;
+  margin-bottom: 5%;
   align-items: center;
 `;
 

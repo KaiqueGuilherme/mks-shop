@@ -1,10 +1,14 @@
 // Container.tsx
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  max-width: 1200px;
-  margin: 0 auto; 
-  padding: 0 20px; 
+
+export const HomeContent = styled.div`
+  width: 100%;
 `;
 
-
+export const UlProducts = styled.ul`
+ display: flex;
+ gap: 15px;
+ justify-content: center;
+ flex-wrap: wrap;
+`;

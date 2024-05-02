@@ -1,20 +1,33 @@
-import { CardContainer, CardContent, CardDescription, CardImage, CardTitle } from "./Card.style"
+import { ButtonCart, BuyPrice, CardContainer, CardContent, CardDescription, CardImage, CardTitle, Price } from "./Card.style"
 import React from 'react';
 
 interface CardProps {
-    image: string;
-    title: string;
+    photo: string;
+    name: string;
+    brand: string;
     description: string;
+    price: string;
   }
 
-export const Card: React.FC<CardProps> = ({ image, title, description }) => {
-    return (
+
+
+export const Card: React.FC<CardProps> = ({ photo, name, brand, description, price}) => {
+  
+
+  return (
       <CardContainer>
-        <CardImage src={image} alt="Card Image" />
+        <CardImage src={photo} alt="Card Image" />
         <CardContent>
-          <CardTitle>{title}</CardTitle>
+          
+          <CardDescription>{brand}</CardDescription>
+          <BuyPrice>
+          <CardTitle>{name}</CardTitle>
+          <Price>{price}</Price>
+          </BuyPrice>
           <CardDescription>{description}</CardDescription>
+          
         </CardContent>
+        <ButtonCart onClick={mad}>Comprar</ButtonCart>
       </CardContainer>
     );
   };
