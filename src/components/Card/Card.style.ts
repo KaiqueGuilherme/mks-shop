@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const CardContainer = styled.div`
   width: 218px;
-  height: 300px;
+  height: 320px;
   border: 1px solid #ddd;
   border-radius: 8px;
   overflow: hidden;
@@ -45,8 +45,8 @@ export const CardDescription = styled.p`
 
 export const Price = styled.button`
 font-family: "Montserrat", sans-serif;
-font-size: 15px;
-width: 90px;
+font-size: 12px;
+width: 110px;
 height: 25px;
 font-weight: 700;
 display: flex;
@@ -64,8 +64,11 @@ background: #373737;
 export const ButtonCart = styled.button`
 background: #0F52BA;
 width: 100%;
+padding: 5px 0 5px;
 display: flex;
+align-items: center;
 justify-content: center;
+gap: 15px;
 color: white;
 font-family: "Montserrat", sans-serif;
 border-color:  transparent;

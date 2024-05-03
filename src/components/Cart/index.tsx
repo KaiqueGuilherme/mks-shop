@@ -1,16 +1,22 @@
-import cartimg from '../../Assets/Cart.svg'
-import { CartContainer, H1ItemCart, ItensCart } from './Cart.style'
+import React from 'react';
+import { motion } from 'framer-motion';
+import cartImage from '../../Assets/Cart.svg';
+import { CartContainer, ItensCart, H1ItemCart } from './Cart.style';
 
-export const Cart = () => {
-
-    return (
-        <>
-            <CartContainer>
-                <ItensCart>
-                    <img src={cartimg} alt="" />
-                    <H1ItemCart>0</H1ItemCart>
-                </ItensCart>
-            </CartContainer>
-        </>
-    )
+interface CartProps {
+  itemCount: number;
 }
+
+export const Cart: React.FC<CartProps> = ({ itemCount }) => {
+  return (
+    <motion.div whileHover={{ scale: 1.1 }}>
+      <CartContainer>
+        <ItensCart>
+          <img src={cartImage} alt="Cart" />
+          <H1ItemCart>{itemCount}</H1ItemCart>
+        </ItensCart>
+      </CartContainer>
+    </motion.div>
+  );
+};
+
