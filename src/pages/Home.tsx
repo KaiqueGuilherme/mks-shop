@@ -58,17 +58,21 @@ export const Home: React.FC = () => {
   };
 
   const handleRemoveFromCart = (id: number) => {
-    setCartItems(prevItems => {
-      const itemIndex = prevItems.findIndex(i => i.id === id);
-      if (itemIndex === -1) return prevItems;
-      const newItems = [...prevItems];
-      if (newItems[itemIndex].quantity > 1) {
-        newItems[itemIndex].quantity -= 1;
-      } else {
-        newItems.splice(itemIndex, 1);
-      }
-      return newItems;
-    });
+   const itemInCart = cartItems.find(cartItem => cartItem.id === id);
+    if (itemInCart) {
+      const updatedCartItems = cartItems.map(cartItem => {
+        if (cartItem.id === id) {
+          return {
+            ...cartItem,
+            quantity: cartItem.quantity - 1
+          };
+        }
+        return cartItem;
+      });
+      setCartItems(updatedCartItems);
+    } else {
+      setCartItems(prevItems => [...prevItems, { ...item, quantity: 1 }]);
+    }
   };
 
   const handleDeleteFromCart = (id: number) => {

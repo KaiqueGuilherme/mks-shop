@@ -1,9 +1,11 @@
 import React from 'react';
-import { CloseButton, ModalContent, ModalOverlay } from './Modal.style';
+import { ButtonAdd, CardImage, CloseButton, ContentNav, Foooter, H1Modal, InformationProduct, InformationProduct2, ListOffModal, MenuAdd, MenuProduct, ModalContent, ModalOverlay, PQuanty, Pname, UlModal } from './Modal.style';
 
 interface Item {
   id: number;
+  photo: string;
   name: string;
+  brand: string;
   price: number;
   quantity: number;
 }
@@ -24,21 +26,34 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, items, onAddItem,
   return (
     <ModalOverlay>
       <ModalContent>
+        <ContentNav>
+        <H1Modal>Carrinho de compras:</H1Modal>
         <CloseButton onClick={onClose}>&times;</CloseButton>
-        <h2>Itens no Carrinho:</h2>
-        <ul>
+        </ContentNav>
+        <UlModal>
           {items.map(item => (
-            <li key={item.id}>
-              <div>{item.name}</div>
-              <div>Preço: R$ {item.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</div>
-              <div>Quantidade: {item.quantity}</div>
-              <button onClick={() => onAddItem(item)} aria-label={`${item.name}`}>+</button>
-              <button onClick={() => onRemoveItem(item.id)} aria-label={`${item.name}`}>-</button>
-              <button onClick={() => onDeleteItem(item.id)} aria-label={`${item.name} `}>Delete</button>
-            </li>
+            <ListOffModal key={item.id}>
+              <CardImage src={item.photo} alt="Card Image" />
+              <InformationProduct>
+              <Pname>{item.name}</Pname>
+              </InformationProduct>
+              <MenuProduct>
+              <PQuanty>Qntd: </PQuanty>
+              <MenuAdd >
+              <ButtonAdd onClick={() => onAddItem(item)} aria-label={`${item.name}`}>+</ButtonAdd>
+              <PQuanty>{item.quantity}</PQuanty>
+              <ButtonAdd onClick={() => onRemoveItem(item.id)} aria-label={`${item.name}`}>-</ButtonAdd>
+              </MenuAdd>
+              </MenuProduct>
+              <div>{item.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</div>
+              <CloseButton onClick={() => onDeleteItem(item.id)} aria-label={`${item.name} `}>&times;</CloseButton>
+            </ListOffModal>
           ))}
-        </ul>
-        <div>Preço Total: R$ {totalPrice.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</div>
+        </UlModal>
+        <Foooter>
+            <div>Preço Total: R$ {totalPrice.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</div>
+        </Foooter>
+        
       </ModalContent>
     </ModalOverlay>
   );
